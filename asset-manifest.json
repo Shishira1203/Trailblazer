@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/SortingVisualizerAlpha/static/css/main.5a804a9e.chunk.css",
-    "main.js": "/SortingVisualizerAlpha/static/js/main.8d700097.chunk.js",
-    "main.js.map": "/SortingVisualizerAlpha/static/js/main.8d700097.chunk.js.map",
-    "runtime-main.js": "/SortingVisualizerAlpha/static/js/runtime-main.fb49568e.js",
-    "runtime-main.js.map": "/SortingVisualizerAlpha/static/js/runtime-main.fb49568e.js.map",
-    "static/css/2.e173b5e9.chunk.css": "/SortingVisualizerAlpha/static/css/2.e173b5e9.chunk.css",
-    "static/js/2.5e7a10c3.chunk.js": "/SortingVisualizerAlpha/static/js/2.5e7a10c3.chunk.js",
-    "static/js/2.5e7a10c3.chunk.js.map": "/SortingVisualizerAlpha/static/js/2.5e7a10c3.chunk.js.map",
-    "static/js/3.3be0fdac.chunk.js": "/SortingVisualizerAlpha/static/js/3.3be0fdac.chunk.js",
-    "static/js/3.3be0fdac.chunk.js.map": "/SortingVisualizerAlpha/static/js/3.3be0fdac.chunk.js.map",
-    "index.html": "/SortingVisualizerAlpha/index.html",
-    "static/css/2.e173b5e9.chunk.css.map": "/SortingVisualizerAlpha/static/css/2.e173b5e9.chunk.css.map",
-    "static/css/main.5a804a9e.chunk.css.map": "/SortingVisualizerAlpha/static/css/main.5a804a9e.chunk.css.map",
-    "static/js/2.5e7a10c3.chunk.js.LICENSE.txt": "/SortingVisualizerAlpha/static/js/2.5e7a10c3.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/SortingVisualizerAlpha/static/media/triangletwo-right.c7b52e1e.svg",
-    "static/media/font-awesome.min.css": "/SortingVisualizerAlpha/static/media/fontawesome-webfont.f691f37e.woff"
+    "main.css": "/Trailblazer/static/css/main.8fd5e874.chunk.css",
+    "main.js": "/Trailblazer/static/js/main.8d700097.chunk.js",
+    "main.js.map": "/Trailblazer/static/js/main.8d700097.chunk.js.map",
+    "runtime-main.js": "/Trailblazer/static/js/runtime-main.a00a540e.js",
+    "runtime-main.js.map": "/Trailblazer/static/js/runtime-main.a00a540e.js.map",
+    "static/css/2.1fd2f2c7.chunk.css": "/Trailblazer/static/css/2.1fd2f2c7.chunk.css",
+    "static/js/2.5e7a10c3.chunk.js": "/Trailblazer/static/js/2.5e7a10c3.chunk.js",
+    "static/js/2.5e7a10c3.chunk.js.map": "/Trailblazer/static/js/2.5e7a10c3.chunk.js.map",
+    "static/js/3.3be0fdac.chunk.js": "/Trailblazer/static/js/3.3be0fdac.chunk.js",
+    "static/js/3.3be0fdac.chunk.js.map": "/Trailblazer/static/js/3.3be0fdac.chunk.js.map",
+    "index.html": "/Trailblazer/index.html",
+    "static/css/2.1fd2f2c7.chunk.css.map": "/Trailblazer/static/css/2.1fd2f2c7.chunk.css.map",
+    "static/css/main.8fd5e874.chunk.css.map": "/Trailblazer/static/css/main.8fd5e874.chunk.css.map",
+    "static/js/2.5e7a10c3.chunk.js.LICENSE.txt": "/Trailblazer/static/js/2.5e7a10c3.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Trailblazer/static/media/triangletwo-right.c7b52e1e.svg",
+    "static/media/font-awesome.min.css": "/Trailblazer/static/media/fontawesome-webfont.f691f37e.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.fb49568e.js",
-    "static/css/2.e173b5e9.chunk.css",
+    "static/js/runtime-main.a00a540e.js",
+    "static/css/2.1fd2f2c7.chunk.css",
     "static/js/2.5e7a10c3.chunk.js",
-    "static/css/main.5a804a9e.chunk.css",
+    "static/css/main.8fd5e874.chunk.css",
     "static/js/main.8d700097.chunk.js"
   ]
 }
