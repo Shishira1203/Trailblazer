@@ -65,8 +65,6 @@ div[disabled]{
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
   animation-delay: 0;
-  animation-direction: alternate;
-  animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
