@@ -36,13 +36,13 @@ div[disabled]{
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
+  border: none;
 }
 
 @keyframes visitedAnimation {
   0% {
     transform: scale(0.3);
     background-color: rgba(0, 0, 66, 0.75);
-    border-radius: 100%;
   }
 
   50% {
