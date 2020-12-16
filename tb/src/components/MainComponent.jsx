@@ -289,6 +289,7 @@ export default class Trailblazer extends Component {
         const startNode = grid[this.state.S_NODE_ROW][this.state.S_NODE_COL];
         const finishNode = grid[this.state.F_NODE_ROW][this.state.F_NODE_COL];
         const visitedNodesInOrder = Dfs(grid, startNode, finishNode);
+        console.log(visitedNodesInOrder);
         this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false  });
         this.animateDfs(visitedNodesInOrder);
     }

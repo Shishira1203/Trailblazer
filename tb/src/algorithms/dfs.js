@@ -1,22 +1,22 @@
-export function Dfs(grid, startNode) {
+export function Dfs(grid, startNode, finishNode) {
     const visitedNodesInOrder = [];
-    helper(grid, startNode.row, startNode.col, visitedNodesInOrder);
+    helper(grid, startNode, finishNode, visitedNodesInOrder);
     return visitedNodesInOrder;
 }
 function isSafe(grid,srow,scol) {
     return srow >= 0 && srow < grid.length && scol >= 0 && scol < grid[0].length && !grid[srow][scol].isVisited&&!grid[srow][scol].isWall;
 }
-function helper(grid, srow, scol, visitedNodesInOrder) {
+function helper(grid, startNode, finishNode, visitedNodesInOrder) {
     const stack = [];
-    stack.push(grid[srow][scol]);
+    stack.push(grid[startNode.row][startNode.col]);
     while (stack.length) {
         const x = stack.pop();
-        if (x.isFinish) {
+        if (x.row===finishNode.row&&x.col===finishNode.col) {
             visitedNodesInOrder.push(x);
             break;
         }
-        visitedNodesInOrder.push(x);
         x.isVisited = true;
+        visitedNodesInOrder.push(x);
         if (isSafe(grid, x.row+1, x.col)) {
             stack.push(grid[x.row+1][x.col]);
         }
