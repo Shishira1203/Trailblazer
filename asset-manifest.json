@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Trailblazer/static/css/main.78d9118d.chunk.css",
-    "main.js": "/Trailblazer/static/js/main.8c1a2937.chunk.js",
-    "main.js.map": "/Trailblazer/static/js/main.8c1a2937.chunk.js.map",
+    "main.js": "/Trailblazer/static/js/main.ebb10fb1.chunk.js",
+    "main.js.map": "/Trailblazer/static/js/main.ebb10fb1.chunk.js.map",
     "runtime-main.js": "/Trailblazer/static/js/runtime-main.a00a540e.js",
     "runtime-main.js.map": "/Trailblazer/static/js/runtime-main.a00a540e.js.map",
     "static/css/2.1fd2f2c7.chunk.css": "/Trailblazer/static/css/2.1fd2f2c7.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.1fd2f2c7.chunk.css",
     "static/js/2.710ba5fb.chunk.js",
     "static/css/main.78d9118d.chunk.css",
-    "static/js/main.8c1a2937.chunk.js"
+    "static/js/main.ebb10fb1.chunk.js"
   ]
 }
