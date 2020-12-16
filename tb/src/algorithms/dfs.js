@@ -9,7 +9,6 @@ function isSafe(grid,srow,scol) {
 function helper(grid, srow, scol, visitedNodesInOrder) {
     const stack = [];
     stack.push(grid[srow][scol]);
-    console.log(stack);
     while (stack.length) {
         const x = stack.pop();
         if (x.isFinish) {

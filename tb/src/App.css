@@ -20,6 +20,9 @@
   background:url('./shared/circle.svg');
 }
 
+.node-bypass{
+  background: url('./shared/circle.svg');
+}
 .node-start {
   background:url('./shared/triangletwo-right.svg');
 }
@@ -60,6 +63,7 @@ div[disabled]{
   }
 }
 
+
 .node-wall {
   animation-name: wallAnimation;
   animation-duration: 0.5s;
@@ -83,7 +87,7 @@ div[disabled]{
 
 
 .grid{
-  margin-top: 100px;
+  margin-top: 50px;
   margin-left: 100px;
 }
 
