@@ -13,7 +13,6 @@ export default class Node extends Component {
 
         return (
             <div
-                id={`node-${row}-${col}`}
                 className={className}
                 onMouseDown={() => onMouseDown(row, col)}
                 onMouseEnter={() => onMouseEnter(row, col)}

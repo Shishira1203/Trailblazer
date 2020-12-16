@@ -198,7 +198,8 @@ export default class Trailblazer extends Component {
     }
 
     handleMouseUp() {
-        this.setState({ mousePressed: false,start:false,finish:false});
+        this.setState({ mousePressed: false, start: false, finish: false });
+        this.forceUpdate();
     }
 
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
@@ -217,7 +218,7 @@ export default class Trailblazer extends Component {
                     ...nxode,
                     previousNode: null,
                     distance:Infinity,
-                    className: 'node node-visited'
+                    className: i===0?'node node-start-visited':i===visitedNodesInOrder.length-1?'node node-finish-visited':'node node-visited'
                 };
                 newGrid[node.row][node.col] = newNode;
                 this.setState({ grid: newGrid, visitedCount: this.state.visitedCount + 1 });
@@ -241,7 +242,7 @@ export default class Trailblazer extends Component {
                     ...nxode,
                     previousNode: null,
                     distance:Infinity,
-                    className: 'node node-shortest-path'
+                    className: i===0?'node node-start-shortest-path':i===nodesInShortestPathOrder.length-1?'node node-finish-shortest-path':'node node-shortest-path'
                 };
                 newGrid[node.row][node.col] = newNode;
                 this.setState({ grid: newGrid,shortestPathCount:this.state.shortestPathCount+1 });
@@ -263,7 +264,7 @@ export default class Trailblazer extends Component {
                 const nxode = newGrid[node.row][node.col];
                 const newNode = {
                     ...nxode,
-                    className: 'node node-visited'
+                    className: i === 0 ? 'node node-start-visited' : i === visitedNodesInOrder.length - 1 ? 'node node-finish-visited' : 'node node-visited'
                 };
                 newGrid[node.row][node.col] = newNode;
                 this.setState({ grid: newGrid,visitedCount:this.state.visitedCount+1 });
@@ -307,7 +308,7 @@ export default class Trailblazer extends Component {
                 const nxode = newGrid[node.row][node.col];
                 const newNode = {
                     ...nxode,
-                    className: 'node node-visited'
+                    className: i === 0 ? 'node node-start-visited' : i === visitedNodesInOrder.length - 1 ? 'node node-finish-visited' : 'node node-visited'
                 };
                 newGrid[node.row][node.col] = newNode;
                 this.setState({ grid: newGrid, visitedCount: this.state.visitedCount + 1 });
@@ -337,12 +338,22 @@ export default class Trailblazer extends Component {
             setTimeout(() => {
                 const node = visitedNodesInOrder[i];
                 const nxode = newGrid[node.row][node.col];
-                const newNode = {
-                    ...nxode,
-                    className: 'node node-visited'
-                };
-                newGrid[node.row][node.col] = newNode;
-                this.setState({ grid: newGrid, visitedCount: this.state.visitedCount + 1 });
+                if (node.row === this.state.F_NODE_ROW && node.col === this.state.F_NODE_COL) {
+                    const newNode = {
+                        ...nxode,
+                        className: 'node node-finish-visited'
+                    };
+                    newGrid[node.row][node.col] = newNode;
+                    this.setState({ grid: newGrid, visitedCount: this.state.visitedCount + 1 });
+                }
+                else {
+                    const newNode = {
+                        ...nxode,
+                        className: i === 0 ? 'node node-start-visited' : 'node node-visited'
+                    };
+                    newGrid[node.row][node.col] = newNode;
+                    this.setState({ grid: newGrid, visitedCount: this.state.visitedCount + 1 });
+                }
             }, 10 * i);
         }
     }

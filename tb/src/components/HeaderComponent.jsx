@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import  tb from '../shared/tb.jpeg';
 import {
     Collapse,
     Navbar,
     NavbarToggler,
-    NavLink,
     Nav,
     NavItem,
-    Button
+    Button,
+    NavbarBrand
 } from 'reactstrap';
 const Example = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Example = (props) => {
     return (
         <div>
             <Navbar color="dark" light expand="md">
-                <NavLink href="/" className="text-white">Trailblazer</NavLink>
+                <NavbarBrand className="text-white"><img src={tb} alt="logo" width="40" height="40"></img>Trailblazer</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
