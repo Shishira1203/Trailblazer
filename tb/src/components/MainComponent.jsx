@@ -129,7 +129,7 @@ export default class Trailblazer extends Component {
 
     resetGrid() {
         const grid = this.getInitialGrid();
-        this.setState({ grid: grid, disabled: false,visitedCount:0,shortestPathCount:0});
+        this.setState({ grid: grid, disabled: false,visitedCount:0,shortestPathCount:0,timeComplexity:0});
     }
 
     componentDidMount() {
@@ -191,14 +191,13 @@ export default class Trailblazer extends Component {
     }
 
     handleMouseEnter(row, col) {
-        if (!this.state.mousePressed) return;
+        if (!this.state.mousePressed||(row===this.state.S_NODE_ROW&&col===this.state.S_NODE_COL)||(row===this.state.F_NODE_ROW&&col===this.state.F_NODE_COL)) return;
         const newGrid = this.state.start ? this.handleStart(this.state.grid, row, col) : this.state.finish ? this.handleFinish(this.state.grid, row, col) : this.getNewGridWithWallToggled( row, col);
         this.setState({ grid: newGrid });
     }
 
     handleMouseUp() {
         this.setState({ mousePressed: false, start: false, finish: false });
-        this.forceUpdate();
     }
 
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal) {
@@ -379,14 +378,14 @@ export default class Trailblazer extends Component {
     }
 
     render() {
-        const { grid, mousePressed,visitedCount,shortestPathCount,disabled } = this.state;
+        const { grid, mousePressed,visitedCount,shortestPathCount,disabled,timeComplexity } = this.state;
         return (
             <>
                 <Header Reset={this.resetGrid} Dijkstra={() => this.visualizeDijkstra()} Dfs={this.visualizeDfs} Bfs={this.visualizeBfs} Astar={(heuristic)=>this.visualizeAstar(heuristic)} disabled={this.state.disabled} />
                 <div className="container">
                     <div>Visited Nodes Count: {visitedCount}</div>
                     <div>Shortest Path Nodes Count: {shortestPathCount}</div>
-                    <div>Time Complexity of the algorithm:{this.state.timeComplexity}ms</div>
+                    <div>Time Complexity of the algorithm:{timeComplexity}ms</div>
                 </div>
                 
                 <div className="grid" disabled={disabled}>
