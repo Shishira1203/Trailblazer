@@ -22,7 +22,8 @@ export default class Trailblazer extends Component {
             start: false,
             finish: false,
             visitedCount: 0,
-            shortestPathCount:0
+            shortestPathCount:0,
+            timeComplexity:0,
         };
         this.resetGrid = this.resetGrid.bind(this);
         this.visualizeDfs = this.visualizeDfs.bind(this);
@@ -121,10 +122,8 @@ export default class Trailblazer extends Component {
                     node.distance = Infinity;
                 }
             }
-            
         }
-        
-        this.setState({ grid: newGrid, toChange: null, visitedCount: 0, shortestPathCount: 0 });
+        this.setState({ grid: newGrid, toChange: null, visitedCount: 0, shortestPathCount: 0,timeComplexity:0 });
     }
 
 
@@ -202,12 +201,12 @@ export default class Trailblazer extends Component {
         this.forceUpdate();
     }
 
-    animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
+    animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal) {
         const newGrid = this.state.grid.slice();
         for (let i = 0; i <= visitedNodesInOrder.length; i++) {
             if (i === visitedNodesInOrder.length) {
                 setTimeout(() => {
-                    this.animateShortestPath(nodesInShortestPathOrder);
+                    this.animateShortestPath(nodesInShortestPathOrder,d,dfinal);
                 }, 10 * i);
                 return;
             }
@@ -226,12 +225,12 @@ export default class Trailblazer extends Component {
         }
     }
 
-    animateShortestPath(nodesInShortestPathOrder) {
+    animateShortestPath(nodesInShortestPathOrder,d,dfinal) {
         const newGrid = this.state.grid.slice();
         for (let i = 0; i <= nodesInShortestPathOrder.length; i++) {
             if (i === nodesInShortestPathOrder.length) {
                 setTimeout(() => {
-                    this.setState({ disabled: !this.state.disabled });
+                    this.setState({ disabled: !this.state.disabled,timeComplexity:dfinal-d});
                 }, 50 * i);
                 return;
             }
@@ -250,12 +249,12 @@ export default class Trailblazer extends Component {
         }
     }
 
-    animateDfs(visitedNodesInOrder) {
+    animateDfs(visitedNodesInOrder,d,dfinal) {
         const newGrid = this.state.grid.slice();
         for (let i = 0; i <= visitedNodesInOrder.length; i++) {
             if (i === visitedNodesInOrder.length) {
                 setTimeout(() => {
-                    this.animateShortestPath(visitedNodesInOrder);
+                    this.animateShortestPath(visitedNodesInOrder,d,dfinal);
                 }, 10 * i);
                 return;
             }
@@ -277,29 +276,33 @@ export default class Trailblazer extends Component {
         this.resetOnlyVisited();
         const startNode = grid[this.state.S_NODE_ROW][this.state.S_NODE_COL];
         const finishNode = grid[this.state.F_NODE_ROW][this.state.F_NODE_COL];
+        var d=new Date()/1000;
         const visitedNodesInOrder = Dijkstra(grid, startNode, finishNode);
+        var dfinal=new Date()/1000;
         const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-        this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false});
-        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+        this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false,timeComplexity:0});
+        this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal);
     }
 
     visualizeDfs() {
         this.resetOnlyVisited();
+        this.setState({timeComplexity:0});
         const { grid } = this.state;
         const startNode = grid[this.state.S_NODE_ROW][this.state.S_NODE_COL];
         const finishNode = grid[this.state.F_NODE_ROW][this.state.F_NODE_COL];
+        var d=new Date()/1000;
         const visitedNodesInOrder = Dfs(grid, startNode, finishNode);
-        console.log(visitedNodesInOrder);
-        this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false  });
-        this.animateDfs(visitedNodesInOrder);
+        var dfinal=new Date()/1000;
+        this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false,timeComplexity:0  });
+        this.animateDfs(visitedNodesInOrder,d,dfinal);
     }
 
-    animateBfs(visitedNodesInOrder) {
+    animateBfs(visitedNodesInOrder,d,dfinal) {
         const newGrid = this.state.grid.slice();
         for (let i = 0; i <= visitedNodesInOrder.length; i++) {
             if (i === visitedNodesInOrder.length) {
                 setTimeout(() => {
-                    this.animateShortestPath(visitedNodesInOrder);
+                    this.animateShortestPath(visitedNodesInOrder,d,dfinal);
                 }, 10 * i);
                 this.setState({ grid: newGrid });
                 return;
@@ -322,17 +325,19 @@ export default class Trailblazer extends Component {
         const grid = this.state.grid;
         const startNode = grid[this.state.S_NODE_ROW][this.state.S_NODE_COL];
         const finishNode = grid[this.state.F_NODE_ROW][this.state.F_NODE_COL];
+        var d=new Date()/1000;
         const visitedNodesInOrder = Bfs(grid, startNode, finishNode);
+        var dfinal=new Date()/1000;
         this.setState({ toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false });
-        this.animateBfs(visitedNodesInOrder);
+        this.animateBfs(visitedNodesInOrder,d,dfinal);
     }
 
-    animateAstar(visitedNodesInOrder, nodesInShortestPathOrder) {
+    animateAstar(visitedNodesInOrder, nodesInShortestPathOrder,d, dfinal) {
         const newGrid = this.state.grid.slice();
         for (let i = 0; i <= visitedNodesInOrder.length; i++) {
             if (i === visitedNodesInOrder.length) {
                 setTimeout(() => {
-                    this.animateShortestPath(nodesInShortestPathOrder);
+                    this.animateShortestPath(nodesInShortestPathOrder,d,dfinal);
                 }, 10 * i);
                 return;
             }
@@ -365,10 +370,12 @@ export default class Trailblazer extends Component {
         const grid = this.state.grid;
         const startNode = grid[this.state.S_NODE_ROW][this.state.S_NODE_COL];
         const finishNode = grid[this.state.F_NODE_ROW][this.state.F_NODE_COL];
+        var d=new Date()/1000;
         const visitedNodesInOrder = Astar(grid, startNode, finishNode,heuristic);
+        var dfinal=new Date()/1000;
         const nodesInShortestPathOrder = shortestPathInOrder();
         this.setState({ toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false  });
-        this.animateAstar(visitedNodesInOrder, nodesInShortestPathOrder);
+        this.animateAstar(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal);
     }
 
     render() {
@@ -379,6 +386,7 @@ export default class Trailblazer extends Component {
                 <div className="container">
                     <div>Visited Nodes Count: {visitedCount}</div>
                     <div>Shortest Path Nodes Count: {shortestPathCount}</div>
+                    <div>Time Complexity of the algorithm:{this.state.timeComplexity}ms</div>
                 </div>
                 
                 <div className="grid" disabled={disabled}>
