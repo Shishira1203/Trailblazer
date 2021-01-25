@@ -85,6 +85,7 @@ div[disabled] {
 }
 
 .node-wall {
+  outline: none;
   animation-name: wallAnimation;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -111,6 +112,7 @@ div[disabled] {
 }
 
 .node-shortest-path {
+  outline: none;
   animation-name: shortestPath;
   animation-duration: 1.5s;
   animation-timing-function: ease-out;
