@@ -1,5 +1,6 @@
+const visitedNodesInOrder = [];
 export function Dijkstra(grid, startNode, finishNode) {
-    const visitedNodesInOrder = [];
+    visitedNodesInOrder.splice(0);
     startNode.distance = 0;
     const unvisitedNodes = getAllNodes(grid);
     while (unvisitedNodes.length) {
@@ -8,7 +9,11 @@ export function Dijkstra(grid, startNode, finishNode) {
         const closestNode = unvisitedNodes.shift();
         if (closestNode.isWall) continue;
 
-        if (closestNode.distance === Infinity) return visitedNodesInOrder;
+        if (closestNode.distance === Infinity){
+            visitedNodesInOrder.splice(0);
+            visitedNodesInOrder.push(startNode);
+            return visitedNodesInOrder;
+        }
 
         closestNode.isVisited = true;
         visitedNodesInOrder.push(closestNode);
@@ -50,8 +55,12 @@ function getAllNodes(grid) {
     return nodes;
 }
 
-export function getNodesInShortestPathOrder(finishNode) {
+export function getNodesInShortestPathOrder(startNode,finishNode) {
     const nodesInShortestPathOrder = [];
+    if(finishNode!==visitedNodesInOrder[visitedNodesInOrder.length-1]){
+        nodesInShortestPathOrder.push(startNode);
+        return nodesInShortestPathOrder;
+    }
     let currentNode = finishNode;
     while (currentNode !== null) {
         nodesInShortestPathOrder.unshift(currentNode);

@@ -48,7 +48,7 @@ export default class Trailblazer extends Component {
         const grid = [];
         for (let row = 0; row < 20; row++) {
             const currentRow = [];
-            for (let col = 0; col < 54; col++) {
+            for (let col = 0; col < 55; col++) {
                 currentRow.push(this.createNode(row, col));
             }
             grid.push(currentRow);
@@ -187,19 +187,17 @@ export default class Trailblazer extends Component {
             this.setState({ finish: true });
         }
         const newGrid = this.state.start?this.handleStart(this.state.grid,row,col):this.state.finish?this.handleFinish(this.state.grid,row,col):this.getNewGridWithWallToggled(row, col);
-        this.setState({ grid: newGrid, mousePressed: true },this.handleMouseEnter(row,col));
+        this.setState({ grid: newGrid, mousePressed: true });
     }
 
     handleMouseEnter(row, col) {
-        console.log(this.state.mousePressed);
         if (!this.state.mousePressed||(row===this.state.S_NODE_ROW&&col===this.state.S_NODE_COL)||(row===this.state.F_NODE_ROW&&col===this.state.F_NODE_COL)) return;
         const newGrid = this.state.start ? this.handleStart(this.state.grid, row, col) : this.state.finish ? this.handleFinish(this.state.grid, row, col) : this.getNewGridWithWallToggled( row, col);
         this.setState({ grid: newGrid });
     }
 
     handleMouseUp() {
-        console.log('IN UP'+this.state.mousePressed);
-        this.setState({ mousePressed: false, start: false, finish: false },this.handleMouseEnter);
+        this.setState({ mousePressed: false, start: false, finish: false });
     }
 
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal) {
@@ -280,7 +278,7 @@ export default class Trailblazer extends Component {
         var d=new Date()/1000;
         const visitedNodesInOrder = Dijkstra(grid, startNode, finishNode);
         var dfinal=new Date()/1000;
-        const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+        const nodesInShortestPathOrder = getNodesInShortestPathOrder(startNode,finishNode);
         this.setState({ ...this.state, toChange: visitedNodesInOrder, visitedCount: 0, shortestPathCount: 0, disabled: !this.state.disabled, mousePressed: false,timeComplexity:0});
         this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal);
     }
@@ -387,8 +385,9 @@ export default class Trailblazer extends Component {
                 <div className="container">
                     <div>Visited Nodes Count: {visitedCount}</div>
                     <div>Shortest Path Nodes Count: {shortestPathCount}</div>
-                    <div>Time Complexity of the algorithm:{timeComplexity}s</div>
+                    <div>Time Complexity of the algorithm:{timeComplexity}ms</div>
                 </div>
+                
                 <div className="grid" disabled={disabled}>
                     {
                         grid.map((row, rowIdx) => {
