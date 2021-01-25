@@ -385,7 +385,14 @@ export default class Trailblazer extends Component {
                 <div className="container">
                     <div>Visited Nodes Count: {visitedCount}</div>
                     <div>Shortest Path Nodes Count: {shortestPathCount}</div>
-                    <div>Time Complexity of the algorithm:{timeComplexity}ms</div>
+                    <div>Time Complexity:{timeComplexity}s</div><br/>
+                    <div className="row">
+                    &nbsp;&nbsp;&nbsp;<div className='node node-start'></div>&nbsp;&nbsp;&nbsp;-Start Node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='node node-finish'></div>&nbsp;&nbsp;&nbsp;-Finish Node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='node node-wall'></div>&nbsp;&nbsp;&nbsp;-Wall Node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='node node-visited'></div>&nbsp;&nbsp;&nbsp;-Visited Node&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <div className='node node-shortest-path'></div>&nbsp;&nbsp;&nbsp;-Shortest Path Node
+                    </div>
                 </div>
                 
                 <div className="grid" disabled={disabled}>

@@ -1,50 +1,54 @@
-.welcome{
+.welcome {
   margin: unset;
   width: 80%;
   padding: 260px;
   padding-top: 370px;
   padding-left: 700px;
 }
-.modalbg{
-  background:url('./shared/gi.gif'); 
+.modalbg {
+  background: url("./shared/gi.gif");
   background-size: cover;
 }
-.node{
+.node {
   width: 25px;
   height: 25px;
   outline: 1px solid rgb(175, 216, 248);
   display: inline-block;
   background-color: white;
 }
+.container {
+  padding: 0%;
+  margin-bottom: 0%;
+}
 .node-finish {
-  background:url('./shared/circle.svg');
+  background: url("./shared/circle.svg");
 }
 
 .node-start {
-  background:url('./shared/triangletwo-right.svg');
+  background: url("./shared/triangletwo-right.svg");
 }
 
-.node-start-visited{
+.node-start-visited {
   box-shadow: inset 0 0 0 1000px rgba(0, 190, 218, 0.7);
-  background:url('./shared/triangletwo-right.svg');
+  background: url("./shared/triangletwo-right.svg");
 }
 
-.node-start-shortest-path{
+.node-start-shortest-path {
   box-shadow: inset 0 0 0 1000px rgba(128, 0, 128, 0.7);
-  background:url('./shared/triangletwo-right.svg');
+  background: url("./shared/triangletwo-right.svg");
 }
 
-.node-finish-visited{
+.node-finish-visited {
   box-shadow: inset 0 0 0 1000px rgba(0, 190, 218, 0.7);
-  background:url('./shared/circle.svg');
+  background: url("./shared/circle.svg");
 }
 
-.node-finish-shortest-path{
+.node-finish-shortest-path {
   box-shadow: inset 0 0 0 1000px rgba(128, 0, 128, 0.7);
-  background:url('./shared/circle.svg');
+  background: url("./shared/circle.svg");
 }
 
-div[disabled]{
+div[disabled] {
   pointer-events: none;
 }
 .node-visited {
@@ -80,7 +84,6 @@ div[disabled]{
   }
 }
 
-
 .node-wall {
   animation-name: wallAnimation;
   animation-duration: 0.5s;
@@ -102,9 +105,8 @@ div[disabled]{
   }
 }
 
-
-.grid{
-  margin-top: 50px;
+.grid {
+  margin-top: 20px;
   margin-left: 100px;
 }
 
