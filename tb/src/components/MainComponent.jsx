@@ -46,9 +46,9 @@ export default class Trailblazer extends Component {
 
     getInitialGrid(){
         const grid = [];
-        for (let row = 0; row < 24; row++) {
+        for (let row = 0; row < 20; row++) {
             const currentRow = [];
-            for (let col = 0; col < 55; col++) {
+            for (let col = 0; col < 54; col++) {
                 currentRow.push(this.createNode(row, col));
             }
             grid.push(currentRow);
@@ -187,17 +187,19 @@ export default class Trailblazer extends Component {
             this.setState({ finish: true });
         }
         const newGrid = this.state.start?this.handleStart(this.state.grid,row,col):this.state.finish?this.handleFinish(this.state.grid,row,col):this.getNewGridWithWallToggled(row, col);
-        this.setState({ grid: newGrid, mousePressed: true });
+        this.setState({ grid: newGrid, mousePressed: true },this.handleMouseEnter(row,col));
     }
 
     handleMouseEnter(row, col) {
+        console.log(this.state.mousePressed);
         if (!this.state.mousePressed||(row===this.state.S_NODE_ROW&&col===this.state.S_NODE_COL)||(row===this.state.F_NODE_ROW&&col===this.state.F_NODE_COL)) return;
         const newGrid = this.state.start ? this.handleStart(this.state.grid, row, col) : this.state.finish ? this.handleFinish(this.state.grid, row, col) : this.getNewGridWithWallToggled( row, col);
         this.setState({ grid: newGrid });
     }
 
     handleMouseUp() {
-        this.setState({ mousePressed: false, start: false, finish: false });
+        console.log('IN UP'+this.state.mousePressed);
+        this.setState({ mousePressed: false, start: false, finish: false },this.handleMouseEnter);
     }
 
     animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder,d,dfinal) {
@@ -385,9 +387,8 @@ export default class Trailblazer extends Component {
                 <div className="container">
                     <div>Visited Nodes Count: {visitedCount}</div>
                     <div>Shortest Path Nodes Count: {shortestPathCount}</div>
-                    <div>Time Complexity of the algorithm:{timeComplexity}ms</div>
+                    <div>Time Complexity of the algorithm:{timeComplexity}s</div>
                 </div>
-                
                 <div className="grid" disabled={disabled}>
                     {
                         grid.map((row, rowIdx) => {
