@@ -44,7 +44,7 @@ const Example = (props) => {
                         </NavItem>
                     </Nav>
                 </Collapse>
-            </Navbar>
+            </Navbar>   
         </div>
     );
 }
