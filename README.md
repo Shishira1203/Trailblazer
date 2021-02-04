@@ -1,5 +1,5 @@
 # Demo link
-https://shishira1203.github.com/Trailblazer
+https://shishira1203.github.io/Trailblazer
 
 # Getting Started with Create React App
 
